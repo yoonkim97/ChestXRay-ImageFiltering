@@ -44,9 +44,9 @@ def main():
         img = Image.open('../images/' + train_image)
         img = img.save(trainFolderName + train_image)
 
-    # for test_image in test_images:
-    #     img = Image.open('../images/' + test_image)
-    #     img = img.save(testFolderName + test_image)
+    for test_image in test_images:
+        img = Image.open('../images/' + test_image)
+        img = img.save(testFolderName + test_image)
 
 
 if __name__ == '__main__':
