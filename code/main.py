@@ -1,8 +1,7 @@
 import pandas as pd
 import os
 from PIL import Image
-import PIL
-
+from PIL import ImageFile
 def main():
     os.chdir("../csv")
     df1 = pd.read_csv("train_val_list.csv")
@@ -21,6 +20,8 @@ def main():
 
     df3 = pd.read_csv('train.csv')
     df4 = pd.read_csv('test.csv')
+
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
 
     train_image_names = df3['Image Index']
     test_image_names = df4['Image Index']
