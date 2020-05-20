@@ -38,9 +38,9 @@ def main():
     # df7 = pd.read_csv('train_pa.csv')
     # df8 = pd.read_csv('train_ap.csv')
 
-    df9 = pd.read_csv('train_healthy_no_cardiomegaly.csv', index_col=0)
-    df10 = pd.read_csv('train_unhealthy_no_cardiomegaly.csv', index_col=0)
-    df11 = pd.read_csv('only_cardiomegaly.csv', index_col=0)
+    df9 = pd.read_csv('train_healthy_no_cardiomegaly.csv')
+    df10 = pd.read_csv('train_unhealthy_no_cardiomegaly.csv')
+    df11 = pd.read_csv('only_cardiomegaly.csv')
 
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
