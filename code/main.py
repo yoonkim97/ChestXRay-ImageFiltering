@@ -23,7 +23,7 @@ def main():
     # test_df = df2[(df2['No Finding'] == 0)]
     # test_df.to_csv('test.csv')
 
-    path = "../images"
+    path = "../data/valid/"
     images = []
     for file in os.listdir(path):
         if file.lower().endswith(".png"):
@@ -38,9 +38,11 @@ def main():
     # df7 = pd.read_csv('train_pa.csv')
     # df8 = pd.read_csv('train_ap.csv')
 
-    df9 = pd.read_csv('train_healthy_no_cardiomegaly.csv')
-    df10 = pd.read_csv('train_unhealthy_no_cardiomegaly.csv')
-    df11 = pd.read_csv('only_cardiomegaly.csv')
+    # df9 = pd.read_csv('train_healthy_no_cardiomegaly.csv')
+    # df10 = pd.read_csv('train_unhealthy_no_cardiomegaly.csv')
+    # df11 = pd.read_csv('only_cardiomegaly.csv')
+
+    df12 = pd.read_csv('temp.csv')
 
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -59,13 +61,16 @@ def main():
     # train_pa_images = []
     # train_ap_images = []
 
-    train_healthy_no_cardiomegaly_image_names = df9['Image Index']
-    train_unhealthy_no_cardiomegaly_image_names = df10['Image Index']
-    train_healthy_no_cardiomegaly_images = []
-    train_unhealthy_no_cardiomegaly_images = []
+    # train_healthy_no_cardiomegaly_image_names = df9['Image Index']
+    # train_unhealthy_no_cardiomegaly_image_names = df10['Image Index']
+    # train_healthy_no_cardiomegaly_images = []
+    # train_unhealthy_no_cardiomegaly_images = []
+    #
+    # test_only_cardiomegaly_image_names = df11['Image Index']
+    # test_only_cardiomegaly_images = []
 
-    test_only_cardiomegaly_image_names = df11['Image Index']
-    test_only_cardiomegaly_images = []
+    test_chexpert_image_names = df12['Path']
+    test_chexpert_images = []
 
     # for i in range(len(train_female_image_names)):
     #     train_female_images.append(train_female_image_names[i])
@@ -81,12 +86,15 @@ def main():
     # for j in range(len(train_ap_image_names)):
     #     train_ap_images.append(train_ap_image_names[j])
 
-    for i in range(len(train_healthy_no_cardiomegaly_image_names)):
-        train_healthy_no_cardiomegaly_images.append(train_healthy_no_cardiomegaly_image_names[i])
-    for j in range(len(train_unhealthy_no_cardiomegaly_image_names)):
-        train_unhealthy_no_cardiomegaly_images.append(train_unhealthy_no_cardiomegaly_image_names[j])
-    for k in range(len(test_only_cardiomegaly_image_names)):
-        test_only_cardiomegaly_images.append(test_only_cardiomegaly_image_names[k])
+    # for i in range(len(train_healthy_no_cardiomegaly_image_names)):
+    #     train_healthy_no_cardiomegaly_images.append(train_healthy_no_cardiomegaly_image_names[i])
+    # for j in range(len(train_unhealthy_no_cardiomegaly_image_names)):
+    #     train_unhealthy_no_cardiomegaly_images.append(train_unhealthy_no_cardiomegaly_image_names[j])
+    # for k in range(len(test_only_cardiomegaly_image_names)):
+    #     test_only_cardiomegaly_images.append(test_only_cardiomegaly_image_names[k])
+
+    for i in range(len(test_chexpert_image_names)):
+        test_chexpert_images.append(test_chexpert_image_names[i])
 
     # trainFolderName = '../data/train/'
     # testFolderName = '../data/test/'
@@ -97,9 +105,11 @@ def main():
     # trainPAFolderName = '../data/train2/pa/'
     # trainAPFolderName = '../data/train2/ap/'
 
-    trainHealthyNoCardiomegalyFolderName = '../data/train3/healthynocardiomegaly/'
-    trainUnhealthyNoCardiomegalyFolderName = '../data/train3/unhealthynocardiomegaly/'
-    testOnlyCardiomegalyFolderName = '../data/testsetout3/test3/'
+    # trainHealthyNoCardiomegalyFolderName = '../data/train3/healthynocardiomegaly/'
+    # trainUnhealthyNoCardiomegalyFolderName = '../data/train3/unhealthynocardiomegaly/'
+    # testOnlyCardiomegalyFolderName = '../data/testsetout3/test3/'
+
+    testChexpertFolderName = '../data/chexpert/'
 
     # if not os.path.exists(trainFolderName):
     #     os.makedirs(trainFolderName)
@@ -116,12 +126,15 @@ def main():
     # if not os.path.exists(trainAPFolderName):
     #     os.makedirs(trainAPFolderName)
 
-    if not os.path.exists(trainHealthyNoCardiomegalyFolderName):
-        os.makedirs(trainHealthyNoCardiomegalyFolderName)
-    if not os.path.exists(trainUnhealthyNoCardiomegalyFolderName):
-        os.makedirs(trainUnhealthyNoCardiomegalyFolderName)
-    if not os.path.exists(testOnlyCardiomegalyFolderName):
-        os.makedirs(testOnlyCardiomegalyFolderName)
+    # if not os.path.exists(trainHealthyNoCardiomegalyFolderName):
+    #     os.makedirs(trainHealthyNoCardiomegalyFolderName)
+    # if not os.path.exists(trainUnhealthyNoCardiomegalyFolderName):
+    #     os.makedirs(trainUnhealthyNoCardiomegalyFolderName)
+    # if not os.path.exists(testOnlyCardiomegalyFolderName):
+    #     os.makedirs(testOnlyCardiomegalyFolderName)
+
+    if not os.path.exists(testChexpertFolderName):
+        os.makedirs(testChexpertFolderName)
 
     # for train_image in train_images:
     #     img = Image.open('../images/' + train_image)
@@ -139,9 +152,9 @@ def main():
     #     img = Image.open('../images/' + test_image)
     #     img = img.save(testFolderName + test_image)
 
-    for train_healthy_no_cardiomegaly_image in train_healthy_no_cardiomegaly_images:
-        img = Image.open('../images/' + train_healthy_no_cardiomegaly_image)
-        img = img.save(trainHealthyNoCardiomegalyFolderName + train_healthy_no_cardiomegaly_image)
+    # for train_healthy_no_cardiomegaly_image in train_healthy_no_cardiomegaly_images:
+    #     img = Image.open('../images/' + train_healthy_no_cardiomegaly_image)
+    #     img = img.save(trainHealthyNoCardiomegalyFolderName + train_healthy_no_cardiomegaly_image)
 
     # for train_male_image in train_male_images:
     #     img = Image.open('../images/' + train_male_image)
@@ -151,13 +164,17 @@ def main():
     #     img = Image.open('../images/' + train_ap_image)
     #     img = img.save(trainAPFolderName + train_ap_image)
 
-    for train_unhealthy_no_cardiomegaly_image in train_unhealthy_no_cardiomegaly_images:
-        img = Image.open('../images/' + train_unhealthy_no_cardiomegaly_image)
-        img = img.save(trainUnhealthyNoCardiomegalyFolderName + train_unhealthy_no_cardiomegaly_image)
+    # for train_unhealthy_no_cardiomegaly_image in train_unhealthy_no_cardiomegaly_images:
+    #     img = Image.open('../images/' + train_unhealthy_no_cardiomegaly_image)
+    #     img = img.save(trainUnhealthyNoCardiomegalyFolderName + train_unhealthy_no_cardiomegaly_image)
+    #
+    # for test_only_cardiomegaly_image in test_only_cardiomegaly_images:
+    #     img = Image.open('../images/' + test_only_cardiomegaly_image)
+    #     img = img.save(testOnlyCardiomegalyFolderName + test_only_cardiomegaly_image)
 
-    for test_only_cardiomegaly_image in test_only_cardiomegaly_images:
-        img = Image.open('../images/' + test_only_cardiomegaly_image)
-        img = img.save(testOnlyCardiomegalyFolderName + test_only_cardiomegaly_image)
+    for test_chexpert_image in test_chexpert_images:
+        img = Image.open('../data/valid' + test_chexpert_image)
+        img = img.save(testChexpertFolderName + test_chexpert_image)
 
 if __name__ == '__main__':
     main()
