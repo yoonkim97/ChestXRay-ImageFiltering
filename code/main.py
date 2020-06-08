@@ -173,7 +173,7 @@ def main():
     #     img = img.save(testOnlyCardiomegalyFolderName + test_only_cardiomegaly_image)
 
     for test_chexpert_image in test_chexpert_images:
-        img = Image.open('../data/valid' + test_chexpert_image)
+        img = Image.open('../data/valid/' + test_chexpert_image)
         img = img.save(testChexpertFolderName + test_chexpert_image)
 
 if __name__ == '__main__':
