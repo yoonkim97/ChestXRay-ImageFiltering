@@ -23,11 +23,11 @@ def main():
     # test_df = df2[(df2['No Finding'] == 0)]
     # test_df.to_csv('test.csv')
 
-    # path = "../data/valid/"
-    # images = []
-    # for file in os.listdir(path):
-    #     if file.lower().endswith(".png"):
-    #         images.append(file)
+    path = "../images/"
+    images = []
+    for file in os.listdir(path):
+        if file.lower().endswith(".png") or file.lower().endswith('.jpg') or file.lower().endswith('.jpeg'):
+            images.append(file)
 
     # df3 = pd.read_csv('train.csv')
     # df4 = pd.read_csv('test.csv')
@@ -42,7 +42,9 @@ def main():
     # df10 = pd.read_csv('train_unhealthy_no_cardiomegaly.csv')
     # df11 = pd.read_csv('only_cardiomegaly.csv')
 
-    df12 = pd.read_csv('temp.csv')
+    # df12 = pd.read_csv('temp.csv')
+
+    df13 = pd.read_csv('x_ray_all_covid.csv')
 
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -69,8 +71,11 @@ def main():
     # test_only_cardiomegaly_image_names = df11['Image Index']
     # test_only_cardiomegaly_images = []
 
-    test_chexpert_image_names = df12['Path']
-    test_chexpert_images = []
+    # test_chexpert_image_names = df12['Path']
+    # test_chexpert_images = []
+
+    test_covid_image_names = df13['filename']
+    test_covid_images = []
 
     # for i in range(len(train_female_image_names)):
     #     train_female_images.append(train_female_image_names[i])
@@ -93,8 +98,11 @@ def main():
     # for k in range(len(test_only_cardiomegaly_image_names)):
     #     test_only_cardiomegaly_images.append(test_only_cardiomegaly_image_names[k])
 
-    for i in range(len(test_chexpert_image_names)):
-        test_chexpert_images.append(test_chexpert_image_names[i])
+    # for i in range(len(test_chexpert_image_names)):
+    #     test_chexpert_images.append(test_chexpert_image_names[i])
+
+    for i in range(len(test_covid_image_names)):
+        test_covid_images.append(test_covid_image_names[i])
 
     # trainFolderName = '../data/train/'
     # testFolderName = '../data/test/'
@@ -109,7 +117,9 @@ def main():
     # trainUnhealthyNoCardiomegalyFolderName = '../data/train3/unhealthynocardiomegaly/'
     # testOnlyCardiomegalyFolderName = '../data/testsetout3/test3/'
 
-    testChexpertFolderName = '../data/chexpert/'
+    # testChexpertFolderName = '../data/chexpert/'
+
+    testCovidFolderName = '../test/covid/'
 
     # if not os.path.exists(trainFolderName):
     #     os.makedirs(trainFolderName)
@@ -133,8 +143,11 @@ def main():
     # if not os.path.exists(testOnlyCardiomegalyFolderName):
     #     os.makedirs(testOnlyCardiomegalyFolderName)
 
-    if not os.path.exists(testChexpertFolderName):
-        os.makedirs(testChexpertFolderName)
+    # if not os.path.exists(testChexpertFolderName):
+    #     os.makedirs(testChexpertFolderName)
+
+    if not os.path.exists(testCovidFolderName):
+        os.makedirs(testCovidFolderName)
 
     # for train_image in train_images:
     #     img = Image.open('../images/' + train_image)
@@ -172,9 +185,12 @@ def main():
     #     img = Image.open('../images/' + test_only_cardiomegaly_image)
     #     img = img.save(testOnlyCardiomegalyFolderName + test_only_cardiomegaly_image)
 
-    for test_chexpert_image in test_chexpert_images:
-        img = Image.open('../data/valid/' + test_chexpert_image)
-        img.save(testChexpertFolderName + '../data/valid' + test_chexpert_image)
+    # for test_chexpert_image in test_chexpert_images:
+    #     img = Image.open('../data/valid/' + test_chexpert_image)
+    #     img.save(testChexpertFolderName + '../data/valid' + test_chexpert_image)
 
+    for test_covid_image in test_covid_images:
+        img = Image.open('../images/' + test_covid_image)
+        img = img.save(testCovidFolderName + test_covid_image)
 if __name__ == '__main__':
     main()
