@@ -175,7 +175,8 @@ def main():
 
     for test_chexpert_image in test_chexpert_images:
         img = Image.open('../data/valid/' + test_chexpert_image)
-        img = img.save(testChexpertFolderName + test_chexpert_image)
+        print(img)
+        # img = img.save(testChexpertFolderName + test_chexpert_image)
 
 if __name__ == '__main__':
     main()
