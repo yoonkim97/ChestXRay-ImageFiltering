@@ -109,7 +109,7 @@ def main():
     # trainUnhealthyNoCardiomegalyFolderName = '../data/train3/unhealthynocardiomegaly/'
     # testOnlyCardiomegalyFolderName = '../data/testsetout3/test3/'
 
-    testChexpertFolderName = '../data/chexpert/'
+    testChexpertFolderName = '../data/valid/chexpert/'
 
     # if not os.path.exists(trainFolderName):
     #     os.makedirs(trainFolderName)
