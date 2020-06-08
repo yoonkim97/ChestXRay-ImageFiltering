@@ -23,11 +23,11 @@ def main():
     # test_df = df2[(df2['No Finding'] == 0)]
     # test_df.to_csv('test.csv')
 
-    path = "../data/valid/"
-    images = []
-    for file in os.listdir(path):
-        if file.lower().endswith(".png"):
-            images.append(file)
+    # path = "../data/valid/"
+    # images = []
+    # for file in os.listdir(path):
+    #     if file.lower().endswith(".png"):
+    #         images.append(file)
 
     # df3 = pd.read_csv('train.csv')
     # df4 = pd.read_csv('test.csv')
@@ -70,6 +70,7 @@ def main():
     # test_only_cardiomegaly_images = []
 
     test_chexpert_image_names = df12['Path']
+    print(test_chexpert_image_names)
     test_chexpert_images = []
 
     # for i in range(len(train_female_image_names)):
@@ -109,7 +110,7 @@ def main():
     # trainUnhealthyNoCardiomegalyFolderName = '../data/train3/unhealthynocardiomegaly/'
     # testOnlyCardiomegalyFolderName = '../data/testsetout3/test3/'
 
-    testChexpertFolderName = '../data/valid/chexpert/'
+    testChexpertFolderName = '../data/chexpert/'
 
     # if not os.path.exists(trainFolderName):
     #     os.makedirs(trainFolderName)
