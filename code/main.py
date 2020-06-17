@@ -4,9 +4,9 @@ from PIL import Image
 from PIL import ImageFile
 def main():
     os.chdir("../csv")
-    df1 = pd.read_csv("train_val_list.csv")
-    train_df = df1[(df1['No Finding'] == 1)]
-    train_df.to_csv('train.csv')
+    # df1 = pd.read_csv("train_val_list.csv")
+    # train_df = df1[(df1['No Finding'] == 1)]
+    # train_df.to_csv('train.csv')
 
     train = pd.read_csv("train.csv")
     female_train_df = train[(train['Patient Gender'] == 'F')]
@@ -19,9 +19,9 @@ def main():
     # ap_train_df = train[(train['View Position'] == 'AP')]
     # ap_train_df.to_csv('train_ap.csv')
 
-    df2 = pd.read_csv('test_list.csv')
-    test_df = df2[(df2['No Finding'] == 0)]
-    test_df.to_csv('test.csv')
+    # df2 = pd.read_csv('test_list.csv')
+    # test_df = df2[(df2['No Finding'] == 0)]
+    # test_df.to_csv('test.csv')
 
     path = "../images/"
     images = []
@@ -29,8 +29,8 @@ def main():
         if file.lower().endswith(".png") or file.lower().endswith('.jpg') or file.lower().endswith('.jpeg'):
             images.append(file)
 
-    df3 = pd.read_csv('train.csv')
-    df4 = pd.read_csv('test.csv')
+    # df3 = pd.read_csv('train.csv')
+    # df4 = pd.read_csv('test.csv')
 
     df5 = pd.read_csv('train_female.csv')
     df6 = pd.read_csv('train_male.csv')
@@ -53,10 +53,10 @@ def main():
     train_female_images = []
     train_male_images = []
 
-    train_image_names = df3['Image Index']
-    test_image_names = df4['Image Index']
-    train_images = []
-    test_images = []
+    # train_image_names = df3['Image Index']
+    # test_image_names = df4['Image Index']
+    # train_images = []
+    # test_images = []
 
     # train_pa_image_names = df7['Image Index']
     # train_ap_image_names = df8['Image Index']
@@ -81,10 +81,10 @@ def main():
         train_female_images.append(train_female_image_names[i])
     for j in range(len(train_male_image_names)):
         train_male_images.append(train_male_image_names[j])
-    for i in range(len(train_image_names)):
-        train_images.append(train_image_names[i])
-    for j in range(len(test_image_names)):
-        test_images.append(test_image_names[j])
+    # for i in range(len(train_image_names)):
+    #     train_images.append(train_image_names[i])
+    # for j in range(len(test_image_names)):
+    #     test_images.append(test_image_names[j])
 
     # for i in range(len(train_pa_image_names)):
     #     train_pa_images.append(train_pa_image_names[i])
@@ -104,8 +104,8 @@ def main():
     # for i in range(len(test_covid_image_names)):
     #     test_covid_images.append(test_covid_image_names[i])
 
-    trainFolderName = '../data/train/'
-    testFolderName = '../data/test/'
+    # trainFolderName = '../data/train/'
+    # testFolderName = '../data/test/'
 
     trainFemaleFolderName = '../data/train/female/'
     trainMaleFolderName = '../data/train/male/'
@@ -121,10 +121,10 @@ def main():
 
     # testCovidFolderName = '../test/covid/'
 
-    if not os.path.exists(trainFolderName):
-        os.makedirs(trainFolderName)
-    if not os.path.exists(testFolderName):
-        os.makedirs(testFolderName)
+    # if not os.path.exists(trainFolderName):
+    #     os.makedirs(trainFolderName)
+    # if not os.path.exists(testFolderName):
+    #     os.makedirs(testFolderName)
 
     if not os.path.exists(trainFemaleFolderName):
         os.makedirs(trainFemaleFolderName)
@@ -149,9 +149,9 @@ def main():
     # if not os.path.exists(testCovidFolderName):
     #     os.makedirs(testCovidFolderName)
 
-    for train_image in train_images:
-        img = Image.open('../images/' + train_image)
-        img = img.save(trainFolderName + train_image)
+    # for train_image in train_images:
+    #     img = Image.open('../images/' + train_image)
+    #     img = img.save(trainFolderName + train_image)
 
     for train_female_image in train_female_images:
         img = Image.open('../images/' + train_female_image)
@@ -161,9 +161,7 @@ def main():
     #     img = Image.open('../images/' + train_pa_image)
     #     img = img.save(trainPAFolderName + train_pa_image)
 
-    for test_image in test_images:
-        img = Image.open('../images/' + test_image)
-        img = img.save(testFolderName + test_image)
+    # for test_image in test_images:git sst_image)
 
     # for train_healthy_no_cardiomegaly_image in train_healthy_no_cardiomegaly_images:
     #     img = Image.open('../images/' + train_healthy_no_cardiomegaly_image)
